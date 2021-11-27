@@ -5,7 +5,8 @@ include_directories(include)
 
 set(CMAKE_C_STANDARD 11)
 
-add_compile_options(-fexceptions -Wall -Wextra -pedantic -Werror -g)
+add_compile_options(-fexceptions -Wall -Wextra -Werror -g  )
 
 add_executable(tricks main.c
-        source/link_list.c)
+        source/link_list.c
+        source/bitshift.c)

@@ -1,6 +1,7 @@
 /*
-** OnsagerHe PROJECT, 2021
-** Project
+** PERSONAL PROJECT; 2021
+** Authors: Albert VALENTIN
+** Project Folder: Project
 ** File description:
 ** link_list.c
 */
@@ -9,7 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../include/link_list.h"
+#include "./link_list.h"
 
 class_t *CreateList(void)
 {
@@ -43,14 +44,14 @@ int PrintList(class_t *This)
     list_t *tmp = (*This).begin;
 
     while(tmp) {
-        printf("%d\n", (*tmp).value);
+        printf("%p\n", (*tmp).value);
         tmp = (*tmp).next;
     }
 
     return EXIT_SUCCESS;
 }
 
-int PushToBeginList(class_t *This, int NewValue)
+int PushToBeginList(class_t *This, void *NewValue)
 {
     list_t *new_node = malloc(sizeof(list_t));
 
@@ -65,7 +66,7 @@ int PushToBeginList(class_t *This, int NewValue)
     return EXIT_SUCCESS;
 }
 
-int PushToEndList(class_t *This, int NewValue)
+int PushToEndList(class_t *This, void *NewValue)
 {
     list_t *NewNode = (*This).begin;
 
@@ -103,13 +104,13 @@ int Free(void *type)
     return 0;
 }
 
-int PopBeginList(class_t *This)
+void *PopBeginList(class_t *This)
 {
-    int return_value = 0;
+    void *return_value = 0;
     list_t *next_node = NULL;
 
     if ((*This).begin == NULL) {
-        return EXIT_FAILURE;
+        return (void *)EXIT_FAILURE;
     }
 
     next_node = (*(*This).begin).next;
@@ -121,9 +122,9 @@ int PopBeginList(class_t *This)
     return return_value;
 }
 
-int PopEndList(class_t *This)
+void *PopEndList(class_t *This)
 {
-    int return_value = 0;
+    void *return_value = 0;
     list_t *new_list = (*This).begin;
 
     if ((*(*This).begin).next == NULL) {
@@ -131,7 +132,7 @@ int PopEndList(class_t *This)
         free((*This).begin);
         return return_value;
     }
-    printf("Free\n");
+
     while ((*(*new_list).next).next != NULL) {
         new_list = (*new_list).next;
     }
