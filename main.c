@@ -11,7 +11,7 @@
 #include "./include/special_number.h"
 #include "./include/link_list.h"
 
-int main(void)
+int start(void)
 {
     class_t *This __attribute__((__cleanup__(Free))) = CreateList();
 
@@ -21,7 +21,7 @@ int main(void)
     (*This).Print(This);
     (*This).Length(This);
     printf("--------------\n");
-    (*This).PushEnd(This, special_number());
+    (*This).PushEnd(This, (void *)special_number());
     (*This).PushEnd(This, (void *)4);
     (*This).PushEnd(This, (void *)3);
     (*This).Print(This);

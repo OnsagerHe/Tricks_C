@@ -8,7 +8,8 @@
 
 #include <stdio.h>
 
-int integer = 0;
+int integer = 4052;
+static const char debug = 0;
 
 static void bin(unsigned n)
 {
@@ -23,7 +24,7 @@ static void bin(unsigned n)
 /*
  * This function can concat binaries of two char to int
  */
-int *special_number(void)
+int special_number(void)
 {
     char first_part = 0b000011111;
     char second_part = 0b001010100;
@@ -31,11 +32,11 @@ int *special_number(void)
     /*******************************************************
      * You can uncomment to debug program or view changement
      *******************************************************/
-    bin(integer);
+     debug == 1 ? bin(integer) : 0;
     //bin(first_part);
     //bin(second_part);
     integer = (first_part << 7) + second_part;
-    bin(integer);
+    //bin(integer);
 
-    return &integer;
+    return integer;
 }
